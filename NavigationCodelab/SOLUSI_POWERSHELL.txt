@@ -1,0 +1,163 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║  SOLUSI: ADB COMMAND DI TERMINAL (CMD & PowerShell)              ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+
+═════════════════════════════════════════════════════════════════════
+✅ UNTUK CMD (Command Prompt)
+═════════════════════════════════════════════════════════════════════
+
+LANGKAH 1: Set PATH (sekali saja)
+────────────────────────────────────────────────────────────────────
+
+Copy-paste ini:
+set PATH=%PATH%;C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+
+Tekan Enter.
+
+
+LANGKAH 2: Jalankan command persis seperti di modul
+────────────────────────────────────────────────────────────────────
+
+Copy-paste ini:
+adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Tekan Enter.
+
+SELESAI! ✅
+
+
+📋 COPY-PASTE UNTUK CMD (2 BARIS):
+────────────────────────────────────────────────────────────────────
+set PATH=%PATH%;C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+
+═════════════════════════════════════════════════════════════════════
+✅ UNTUK POWERSHELL
+═════════════════════════════════════════════════════════════════════
+
+🔍 MASALAH YANG TERJADI:
+═════════════════════════════════════════════════════════════════════
+
+Terminal Anda: PowerShell (PS), bukan CMD!
+
+Command yang Anda coba:
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Error:
+   The term 'adb' is not recognized...
+
+
+
+LANGKAH 1: Set PATH (sekali saja)
+────────────────────────────────────────────────────────────────────
+
+Copy-paste ini:
+$env:Path += ";C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools"
+
+Tekan Enter.
+
+
+LANGKAH 2: Jalankan command deep link
+────────────────────────────────────────────────────────────────────
+
+Copy-paste ini:
+adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Tekan Enter.
+
+SELESAI! ✅
+
+
+📋 COPY-PASTE UNTUK POWERSHELL (2 BARIS):
+────────────────────────────────────────────────────────────────────
+$env:Path += ";C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools"
+adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+
+
+═════════════════════════════════════════════════════════════════════
+💡 PERBEDAAN CMD vs POWERSHELL:
+═════════════════════════════════════════════════════════════════════
+
+CMD:
+   set PATH=%PATH%;C:\path\to\adb
+
+PowerShell:
+   $env:Path += ";C:\path\to\adb"
+
+
+═════════════════════════════════════════════════════════════════════
+🎯 CARA MENGETAHUI TERMINAL ANDA CMD ATAU POWERSHELL:
+═════════════════════════════════════════════════════════════════════
+
+CMD (Command Prompt):
+   Prompt: C:\Users\LENOVO\...>
+
+PowerShell:
+   Prompt: PS C:\Users\LENOVO\...>
+
+Lihat di awal baris terminal Anda!
+
+
+═════════════════════════════════════════════════════════════════════
+⚡ QUICK ACTION - PILIH SESUAI TERMINAL ANDA:
+═════════════════════════════════════════════════════════════════════
+
+JIKA TERMINAL ANDA CMD:
+────────────────────────────────────────────────────────────────────
+set PATH=%PATH%;C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+
+JIKA TERMINAL ANDA POWERSHELL:
+────────────────────────────────────────────────────────────────────
+$env:Path += ";C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools"
+adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+
+Copy 2 baris sesuai terminal Anda, paste, tekan Enter!
+
+
+═════════════════════════════════════════════════════════════════════
+🎓 SETELAH SET PATH, COMMAND ADB LAIN JUGA BISA:
+═════════════════════════════════════════════════════════════════════
+
+adb devices
+adb uninstall com.example.compose.rally
+adb logcat
+adb install app.apk
+
+Semua command adb bisa dipakai persis seperti di modul! ✅
+
+
+═════════════════════════════════════════════════════════════════════
+📝 CATATAN PENTING:
+═════════════════════════════════════════════════════════════════════
+
+✓ PATH yang di-set hanya berlaku di terminal session itu
+✓ Jika tutup terminal, harus set lagi saat buka baru
+✓ Pastikan emulator sudah running sebelum jalankan command
+✓ Pastikan Rally app sudah terinstall (via INSTALL_SAFE.bat)
+
+
+═════════════════════════════════════════════════════════════════════
+🏁 RINGKASAN:
+═════════════════════════════════════════════════════════════════════
+
+Untuk CMD:
+   set PATH=%PATH%;C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Untuk PowerShell:
+   $env:Path += ";C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools"
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Setelah set PATH, command adb bisa digunakan PERSIS seperti di modul! ✅
+
+
+═════════════════════════════════════════════════════════════════════
+

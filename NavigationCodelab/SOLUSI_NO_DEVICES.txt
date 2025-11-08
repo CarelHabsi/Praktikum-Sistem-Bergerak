@@ -1,0 +1,257 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║     ⚠️  ERROR: No devices/emulators found                        ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+
+🔍 MASALAH YANG TERJADI:
+═════════════════════════════════════════════════════════════════════
+
+Output script Anda:
+   "adb.exe: no devices/emulators found"
+
+Artinya:
+   ADB berfungsi, tapi tidak ada emulator yang terdeteksi!
+
+
+═════════════════════════════════════════════════════════════════════
+✅ SOLUSI STEP-BY-STEP:
+═════════════════════════════════════════════════════════════════════
+
+LANGKAH 1: CEK STATUS EMULATOR
+────────────────────────────────────────────────────────────────────
+
+Apakah emulator sudah running?
+
+✓ CARA CEK:
+  1. Lihat layar komputer Anda
+  2. Apakah ada window emulator Android terbuka?
+  3. Apakah sudah muncul home screen Android?
+
+❌ JIKA BELUM ADA:
+  Emulator belum dihidupkan! Lanjut ke LANGKAH 2.
+
+✓ JIKA SUDAH ADA:
+  Emulator ada tapi tidak terdeteksi ADB! Lanjut ke LANGKAH 3.
+
+
+LANGKAH 2: START EMULATOR
+────────────────────────────────────────────────────────────────────
+
+Cara menghidupkan emulator:
+
+1. Buka Android Studio
+2. Klik menu: Tools → Device Manager
+3. Akan muncul panel Device Manager
+4. Lihat list emulator Anda (misal: Pixel 4, Small_Phone)
+5. Klik tombol ▶ PLAY (hijau) di samping emulator
+6. TUNGGU 2-5 menit sampai emulator boot selesai
+7. Tunggu sampai muncul HOME SCREEN Android
+
+⚠️ PENTING:
+   - First boot LAMA (2-5 menit) - ini NORMAL!
+   - Jangan close window emulator
+   - Tunggu sampai benar-benar selesai boot
+
+
+LANGKAH 3: CEK KONEKSI ADB (Jika emulator sudah running)
+────────────────────────────────────────────────────────────────────
+
+Jika emulator sudah ada tapi tidak terdeteksi:
+
+A. CEK DARI SCRIPT:
+   Jalankan di CMD:
+   diagnose-emulator.bat
+
+   Script akan tampilkan status lengkap.
+
+B. RESTART ADB:
+   Jalankan di CMD:
+   restart-emulator.bat
+
+   Script akan restart ADB server.
+
+C. CEK LAGI:
+   Setelah restart, jalankan:
+   test-deep-link.bat
+
+
+LANGKAH 4: INSTALL APP (Setelah emulator terdeteksi)
+────────────────────────────────────────────────────────────────────
+
+Setelah emulator running dan terdeteksi:
+
+1. Jalankan di CMD:
+   run-fix-all.bat
+
+2. Tunggu sampai selesai install
+
+3. Test deep link:
+   test-deep-link.bat
+
+
+═════════════════════════════════════════════════════════════════════
+🎯 QUICK FIX - URUTAN LENGKAP:
+═════════════════════════════════════════════════════════════════════
+
+1️⃣ START EMULATOR
+   Android Studio → Tools → Device Manager → Play ▶
+
+2️⃣ TUNGGU BOOT SELESAI (2-5 menit)
+   Sampai muncul home screen Android
+
+3️⃣ INSTALL APP
+   Di CMD: run-fix-all.bat
+
+4️⃣ TEST DEEP LINK
+   Di CMD: test-deep-link.bat
+
+
+═════════════════════════════════════════════════════════════════════
+💡 KENAPA "adb" NOT RECOGNIZED SETELAH KELUAR SCRIPT?
+═════════════════════════════════════════════════════════════════════
+
+Anda mencoba:
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Error:
+   'adb' is not recognized
+
+Alasan:
+   Command "adb" hanya tersedia DALAM script atau di Android Studio
+   Terminal. Di CMD biasa, ADB belum ada di PATH.
+
+Solusi:
+   ✅ Gunakan script: test-deep-link.bat
+   ✅ ATAU gunakan Android Studio Terminal
+
+
+═════════════════════════════════════════════════════════════════════
+🔧 TROUBLESHOOTING LANJUTAN:
+═════════════════════════════════════════════════════════════════════
+
+Masalah: Emulator lambat/hang saat boot
+Solusi:
+   - Pastikan RAM tersisa minimal 4GB
+   - Tutup aplikasi lain yang berat
+   - Gunakan emulator dengan spec lebih rendah (Pixel 4, API 30)
+
+Masalah: Emulator tidak mau start
+Solusi:
+   - Cold Boot: Device Manager → dropdown ▼ → Cold Boot Now
+   - Wipe Data: Device Manager → dropdown ▼ → Wipe Data
+   - Buat emulator baru dengan spec lebih rendah
+
+Masalah: ADB tidak menemukan emulator yang sudah running
+Solusi:
+   - Jalankan: restart-emulator.bat
+   - Atau restart emulator dari Device Manager
+
+
+═════════════════════════════════════════════════════════════════════
+📋 CHECKLIST - PASTIKAN SEMUA INI:
+═════════════════════════════════════════════════════════════════════
+
+Sebelum jalankan test-deep-link.bat:
+
+□ Emulator sudah dibuat di Device Manager
+□ Emulator sudah di-start (klik Play ▶)
+□ Tunggu boot selesai (2-5 menit) - muncul home screen
+□ Window emulator masih terbuka (jangan di-close)
+□ Rally app sudah terinstall (via run-fix-all.bat)
+
+
+═════════════════════════════════════════════════════════════════════
+🚀 ACTION PLAN - LAKUKAN SEKARANG:
+═════════════════════════════════════════════════════════════════════
+
+STEP 1: BUKA ANDROID STUDIO
+   Klik icon Android Studio di desktop/start menu
+
+STEP 2: BUKA DEVICE MANAGER
+   Tools → Device Manager
+   (Atau klik icon HP di toolbar kanan atas)
+
+STEP 3: START EMULATOR
+   Klik ▶ PLAY di samping emulator Anda
+
+   Emulator yang mungkin ada:
+   - Pixel 4
+   - Pixel 5
+   - Small_Phone
+   - Medium_Phone
+   - Dll
+
+STEP 4: TUNGGU BOOT SELESAI
+   Akan muncul window emulator baru
+   Tunggu sampai muncul home screen Android
+   (2-5 menit untuk first boot)
+
+STEP 5: KEMBALI KE CMD & JALANKAN
+   Di CMD yang terbuka, ketik:
+   run-fix-all.bat
+
+   Tunggu sampai selesai install
+
+STEP 6: TEST DEEP LINK
+   test-deep-link.bat
+
+   Sekarang seharusnya berhasil!
+
+
+═════════════════════════════════════════════════════════════════════
+❓ FAQ - PERTANYAAN UMUM:
+═════════════════════════════════════════════════════════════════════
+
+Q: Berapa lama tunggu emulator boot?
+A: First boot: 2-5 menit (NORMAL!)
+   Next boot: 30-60 detik (jika pakai Quick Boot)
+
+Q: Gimana tahu emulator sudah selesai boot?
+A: Sudah muncul home screen Android dengan icon-icon app
+
+Q: Apa bedanya Cold Boot vs Quick Boot?
+A: Cold Boot = start dari awal (lama)
+   Quick Boot = resume dari snapshot (cepat)
+
+Q: Kenapa emulator saya lambat?
+A: - RAM kurang (minimal butuh 4GB free)
+   - Processor kurang kuat
+   - Emulator spec terlalu tinggi
+   Solusi: Gunakan emulator dengan spec lebih rendah
+
+Q: Boleh close emulator setelah selesai?
+A: Boleh, tapi lebih baik MINIMIZE aja
+   Next time lebih cepat (Quick Boot)
+
+
+═════════════════════════════════════════════════════════════════════
+🏁 RINGKASAN:
+═════════════════════════════════════════════════════════════════════
+
+Masalah Anda:
+   ✗ Emulator tidak running / tidak terdeteksi
+
+Solusi:
+   1. Start emulator dari Android Studio Device Manager
+   2. Tunggu boot selesai (2-5 menit)
+   3. Jalankan: run-fix-all.bat
+   4. Jalankan: test-deep-link.bat
+
+Setelah itu semuanya akan berfungsi! ✅
+
+
+═════════════════════════════════════════════════════════════════════
+
+MULAI SEKARANG:
+
+1. Buka Android Studio
+2. Tools → Device Manager → Klik Play ▶
+3. Tunggu emulator boot
+4. Kembali ke CMD
+5. Jalankan: run-fix-all.bat
+
+
+═════════════════════════════════════════════════════════════════════
+

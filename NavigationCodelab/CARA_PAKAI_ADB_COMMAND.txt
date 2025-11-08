@@ -1,0 +1,250 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║  CARA MENGGUNAKAN COMMAND ADB DEEP LINK SECARA LANGSUNG          ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+
+❓ PERTANYAAN ANDA:
+═════════════════════════════════════════════════════════════════════
+
+Gak bisa pakai ini ya?
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+
+✅ JAWABAN: BISA! Tapi harus di tempat yang tepat!
+═════════════════════════════════════════════════════════════════════
+
+
+═════════════════════════════════════════════════════════════════════
+🚀 CARA 1: GUNAKAN ANDROID STUDIO TERMINAL (PALING MUDAH!)
+═════════════════════════════════════════════════════════════════════
+
+Di Android Studio Terminal, command ADB otomatis tersedia!
+
+LANGKAH:
+
+1️⃣ Buka Android Studio
+
+2️⃣ Klik menu: View → Tool Windows → Terminal
+   (Atau tekan Alt + F12)
+
+3️⃣ Di terminal, copy-paste command ini:
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+4️⃣ Tekan Enter
+
+5️⃣ SELESAI! Rally app akan terbuka ke halaman Checking account!
+
+
+═════════════════════════════════════════════════════════════════════
+🛠️ CARA 2: GUNAKAN SCRIPT (OTOMATIS!)
+═════════════════════════════════════════════════════════════════════
+
+Saya sudah buat script yang otomatis handle semuanya:
+
+Di CMD Anda yang sudah terbuka, ketik:
+
+   test-deep-link.bat
+
+Script ini akan:
+✓ Auto-detect lokasi ADB
+✓ Jalankan command deep link otomatis
+✓ Tampilkan hasil
+
+Sama persis hasilnya, tapi lebih mudah!
+
+
+═════════════════════════════════════════════════════════════════════
+💻 CARA 3: TAMBAHKAN ADB KE PATH (ADVANCED)
+═════════════════════════════════════════════════════════════════════
+
+Jika mau bisa pakai command "adb" langsung di CMD biasa:
+
+LANGKAH:
+
+1️⃣ Tekan Windows + R
+
+2️⃣ Ketik: sysdm.cpl
+   Tekan Enter
+
+3️⃣ Tab "Advanced" → klik "Environment Variables"
+
+4️⃣ Di "System variables", cari "Path" → klik "Edit"
+
+5️⃣ Klik "New" → paste lokasi ADB:
+   C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+
+6️⃣ Klik OK → OK → OK
+
+7️⃣ TUTUP CMD lama, buka CMD BARU
+
+8️⃣ Sekarang bisa pakai command:
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+
+═════════════════════════════════════════════════════════════════════
+🎯 REKOMENDASI SAYA:
+═════════════════════════════════════════════════════════════════════
+
+Gunakan CARA 1 (Android Studio Terminal) karena:
+   ✓ Paling mudah (tidak perlu setting apapun)
+   ✓ ADB otomatis tersedia
+   ✓ Tidak perlu restart CMD
+   ✓ Tidak perlu edit environment variables
+
+
+═════════════════════════════════════════════════════════════════════
+📋 COMMAND DEEP LINK LENGKAP:
+═════════════════════════════════════════════════════════════════════
+
+Command:
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Penjelasan:
+   adb shell              → Execute command di Android device
+   am start               → Activity Manager: start activity
+   -d "rally://..."       → Data URI (deep link destination)
+   -a android.intent.action.VIEW → Action VIEW
+
+Fungsi:
+   Membuka Rally app langsung ke halaman "Accounts → Checking"
+
+
+═════════════════════════════════════════════════════════════════════
+🔍 KENAPA DI CMD BIASA TIDAK BISA?
+═════════════════════════════════════════════════════════════════════
+
+Ketika Anda ketik di CMD biasa:
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Error:
+   'adb' is not recognized as an internal or external command
+
+Alasan:
+   Command "adb" belum ada di PATH Windows, jadi CMD tidak tahu
+   di mana mencari program "adb.exe"
+
+Solusi:
+   1. Gunakan Android Studio Terminal (ADB otomatis tersedia)
+   2. Atau gunakan script test-deep-link.bat (otomatis cari ADB)
+   3. Atau add ADB ke PATH (cara 3 di atas)
+
+
+═════════════════════════════════════════════════════════════════════
+✅ QUICK START - LAKUKAN SEKARANG:
+═════════════════════════════════════════════════════════════════════
+
+OPSI A: Via Android Studio Terminal (Termudah!)
+────────────────────────────────────────────────────────────────────
+
+1. Buka Android Studio
+2. Alt + F12 (atau View → Tool Windows → Terminal)
+3. Paste: adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+4. Enter
+5. DONE! ✅
+
+
+OPSI B: Via Script (Otomatis!)
+────────────────────────────────────────────────────────────────────
+
+Di CMD Anda, ketik:
+   test-deep-link.bat
+
+Enter, DONE! ✅
+
+
+═════════════════════════════════════════════════════════════════════
+📝 CATATAN PENTING:
+═════════════════════════════════════════════════════════════════════
+
+Sebelum jalankan command deep link:
+   ✓ Emulator HARUS sudah running
+   ✓ Rally app HARUS sudah terinstall
+   ✓ Tunggu sampai emulator selesai boot
+
+Jika belum install app:
+   1. Start emulator
+   2. Jalankan: INSTALL_SAFE.bat
+   3. Tunggu sampai selesai
+   4. Baru jalankan deep link command
+
+
+═════════════════════════════════════════════════════════════════════
+❓ TROUBLESHOOTING:
+═════════════════════════════════════════════════════════════════════
+
+Q: Command deep link gagal "error: device not found"
+A: Emulator belum running atau belum terdeteksi
+   Solusi: Start emulator dari Android Studio
+
+Q: Command deep link gagal "Activity not started"
+A: Rally app belum terinstall
+   Solusi: Jalankan INSTALL_SAFE.bat dulu
+
+Q: Mau pakai command adb lainnya juga
+A: Semua command adb bisa dipakai di Android Studio Terminal:
+   adb devices
+   adb install app.apk
+   adb uninstall package.name
+   adb logcat
+   dll
+
+
+═════════════════════════════════════════════════════════════════════
+🎓 COMMAND ADB BERGUNA LAINNYA:
+═════════════════════════════════════════════════════════════════════
+
+Semua ini bisa dipakai di Android Studio Terminal:
+
+Check devices:
+   adb devices
+
+Install APK:
+   adb install path/to/app.apk
+
+Uninstall app:
+   adb uninstall com.example.compose.rally
+
+View logs:
+   adb logcat
+
+Clear app data:
+   adb shell pm clear com.example.compose.rally
+
+Force stop app:
+   adb shell am force-stop com.example.compose.rally
+
+Start app:
+   adb shell monkey -p com.example.compose.rally 1
+
+
+═════════════════════════════════════════════════════════════════════
+🏁 RINGKASAN:
+═════════════════════════════════════════════════════════════════════
+
+Command:
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+✅ BISA digunakan di:
+   ✓ Android Studio Terminal (RECOMMENDED!)
+   ✓ Script test-deep-link.bat (OTOMATIS!)
+   ✓ CMD biasa (setelah add ADB ke PATH)
+
+❌ TIDAK BISA di:
+   ✗ CMD biasa (tanpa add ke PATH)
+
+
+═════════════════════════════════════════════════════════════════════
+
+CARA PALING MUDAH:
+
+1. Buka Android Studio
+2. Tekan Alt + F12 (buka Terminal)
+3. Paste command Anda
+4. Enter
+5. SELESAI! ✅
+
+
+═════════════════════════════════════════════════════════════════════
+

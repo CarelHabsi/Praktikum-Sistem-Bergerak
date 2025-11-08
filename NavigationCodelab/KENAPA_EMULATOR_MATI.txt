@@ -1,0 +1,231 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║     ⚠️  EMULATOR MATI? INI MASALAHNYA DAN SOLUSINYA!             ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+
+🐛 MASALAH YANG TERJADI:
+═════════════════════════════════════════════════════════════════════
+
+Anda jalankan: INSTALL_APP.bat
+Hasil: Emulator mati!
+
+❌ INI TIDAK SEHARUSNYA TERJADI!
+
+
+═════════════════════════════════════════════════════════════════════
+🔍 KENAPA EMULATOR MATI?
+═════════════════════════════════════════════════════════════════════
+
+Penyebab:
+Script INSTALL_APP.bat di STEP 1 melakukan:
+
+   taskkill /F /IM qemu-system-x86_64.exe
+   taskkill /F /IM emulator.exe
+
+Ini akan KILL semua proses emulator yang running!
+
+Maksud awalnya:
+   Kill emulator yang HANG/bermasalah
+
+Yang terjadi:
+   Kill emulator yang NORMAL dan sedang Anda pakai!
+
+KESALAHAN SAYA! Maaf! 😓
+
+
+═════════════════════════════════════════════════════════════════════
+✅ SOLUSI: GUNAKAN SCRIPT BARU YANG AMAN!
+═════════════════════════════════════════════════════════════════════
+
+Saya sudah buat script baru yang TIDAK kill emulator:
+
+   INSTALL_SAFE.bat
+
+Script ini:
+   ✓ TIDAK kill emulator yang sedang running
+   ✓ Hanya restart ADB server
+   ✓ Detect emulator yang ada
+   ✓ Install app dengan aman
+   ✓ Emulator tetap hidup!
+
+
+═════════════════════════════════════════════════════════════════════
+🚀 CARA PAKAI YANG BENAR:
+═════════════════════════════════════════════════════════════════════
+
+STEP 1: START EMULATOR LAGI
+────────────────────────────────────────────────────────────────────
+
+Karena emulator sudah mati, start lagi:
+
+1. Buka Android Studio
+2. Tools → Device Manager
+3. Klik ▶ PLAY (hijau) di samping emulator
+4. TUNGGU 2-5 menit sampai boot selesai
+5. Lihat window emulator sampai muncul HOME SCREEN Android
+
+
+STEP 2: GUNAKAN SCRIPT AMAN
+────────────────────────────────────────────────────────────────────
+
+Setelah emulator running, di CMD ketik:
+
+   INSTALL_SAFE.bat
+
+Tekan Enter.
+
+Script ini TIDAK akan kill emulator Anda!
+
+
+STEP 3: TUNGGU INSTALL SELESAI
+────────────────────────────────────────────────────────────────────
+
+Script akan:
+✓ Restart ADB server (tanpa kill emulator)
+✓ Detect emulator yang running
+✓ Uninstall app lama
+✓ Install Rally app yang baru
+✓ Emulator TETAP HIDUP!
+✓ Tampilkan: "✓ SELESAI! App sudah diinstall"
+
+
+STEP 4: TEST DEEP LINK
+────────────────────────────────────────────────────────────────────
+
+Setelah app terinstall, test dengan:
+
+   test-deep-link.bat
+
+Rally app akan terbuka langsung ke halaman Checking account!
+
+
+═════════════════════════════════════════════════════════════════════
+💡 PERBEDAAN SCRIPT LAMA VS BARU:
+═════════════════════════════════════════════════════════════════════
+
+INSTALL_APP.bat (LAMA - KILL EMULATOR):
+   ❌ taskkill /F /IM qemu-system-x86_64.exe
+   ❌ taskkill /F /IM emulator.exe
+   ❌ taskkill /F /IM adb.exe
+   → Emulator mati!
+
+INSTALL_SAFE.bat (BARU - AMAN):
+   ✓ TIDAK kill emulator
+   ✓ Hanya restart ADB server
+   ✓ Emulator tetap hidup!
+
+
+═════════════════════════════════════════════════════════════════════
+📋 QUICK COMMAND:
+═════════════════════════════════════════════════════════════════════
+
+Anda sudah di folder yang benar, tinggal:
+
+1. Start emulator lagi dari Android Studio
+2. Tunggu boot selesai (2-5 menit)
+3. Ketik di CMD:
+
+   INSTALL_SAFE.bat
+
+
+═════════════════════════════════════════════════════════════════════
+⚠️ CATATAN PENTING:
+═════════════════════════════════════════════════════════════════════
+
+❌ JANGAN gunakan:
+   - run-fix-all.bat (RUSAK!)
+   - INSTALL_APP.bat (KILL EMULATOR!)
+
+✅ GUNAKAN:
+   - INSTALL_SAFE.bat (AMAN! Tidak kill emulator!)
+   - test-deep-link.bat (Test deep link)
+
+
+═════════════════════════════════════════════════════════════════════
+❓ KAPAN PERLU KILL EMULATOR?
+═════════════════════════════════════════════════════════════════════
+
+Kill emulator hanya jika:
+   ✓ Emulator hang/freeze dan tidak responsif
+   ✓ Emulator error dan tidak bisa di-close normal
+   ✓ Mau restart emulator dari awal
+
+TIDAK perlu kill jika:
+   ✗ Emulator berjalan normal
+   ✗ Hanya mau install app
+   ✗ Hanya mau update app
+
+
+═════════════════════════════════════════════════════════════════════
+🔧 JIKA EMULATOR BENAR-BENAR HANG:
+═════════════════════════════════════════════════════════════════════
+
+Gunakan script khusus:
+   restart-emulator.bat
+
+Script ini memang dibuat untuk restart emulator yang hang.
+Tapi JANGAN pakai untuk install app biasa!
+
+
+═════════════════════════════════════════════════════════════════════
+🎯 ACTION PLAN SEKARANG:
+═════════════════════════════════════════════════════════════════════
+
+1️⃣ START EMULATOR
+   Android Studio → Tools → Device Manager → Play ▶
+   Tunggu 2-5 menit sampai boot selesai
+
+2️⃣ JALANKAN SCRIPT AMAN
+   Di CMD: INSTALL_SAFE.bat
+   Tekan Enter
+
+3️⃣ TUNGGU INSTALL SELESAI
+   Script akan tampilkan progress
+   Emulator tetap hidup!
+
+4️⃣ TEST APP
+   test-deep-link.bat
+
+
+═════════════════════════════════════════════════════════════════════
+🏁 RINGKASAN:
+═════════════════════════════════════════════════════════════════════
+
+Masalah:
+   ✗ INSTALL_APP.bat kill emulator yang sedang running
+
+Solusi:
+   ✓ Gunakan INSTALL_SAFE.bat yang tidak kill emulator
+
+Script Yang Benar:
+   ✓ INSTALL_SAFE.bat → Install app (AMAN!)
+   ✓ test-deep-link.bat → Test deep link
+   ✓ restart-emulator.bat → Restart emulator hang (khusus untuk hang!)
+
+Script Yang JANGAN Dipakai:
+   ✗ run-fix-all.bat → RUSAK
+   ✗ INSTALL_APP.bat → KILL EMULATOR
+
+
+═════════════════════════════════════════════════════════════════════
+
+MULAI SEKARANG:
+
+1. Start emulator dari Android Studio
+2. Tunggu boot selesai (2-5 menit)
+3. Ketik di CMD: INSTALL_SAFE.bat
+4. Emulator tetap hidup, app akan terinstall!
+5. Test dengan: test-deep-link.bat
+
+
+═════════════════════════════════════════════════════════════════════
+
+MAAF ATAS KESALAHAN INI! 🙏
+
+Script INSTALL_SAFE.bat sudah diperbaiki dan tidak akan kill emulator!
+
+
+═════════════════════════════════════════════════════════════════════
+

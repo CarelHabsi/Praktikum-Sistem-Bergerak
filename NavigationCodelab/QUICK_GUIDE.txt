@@ -1,0 +1,57 @@
+═══════════════════════════════════════════════════════════════
+  🎉 SCRIPT BERHASIL! - QUICK REFERENCE
+═══════════════════════════════════════════════════════════════
+
+🚀 LANGKAH SELANJUTNYA (PILIH SALAH SATU):
+
+1️⃣ TEST DEEP LINK
+   test-deep-link.bat
+
+2️⃣ BUKA APP DI EMULATOR
+   Lihat di emulator → Buka app "Rally"
+
+3️⃣ EXPLORE CODE
+   Buka Android Studio → Lihat file-file Kotlin
+
+═══════════════════════════════════════════════════════════════
+
+📋 COMMAND YANG BERGUNA:
+
+Install/Update app:      run-fix-all.bat
+Test deep link:          test-deep-link.bat
+Restart emulator hang:   restart-emulator.bat
+Diagnostic:              diagnose-emulator.bat
+
+═══════════════════════════════════════════════════════════════
+
+💡 TIPS:
+
+✓ Emulator tetap running = lebih cepat next time
+✓ Setelah edit code, run: run-fix-all.bat
+✓ Gunakan Logcat di Android Studio untuk debug
+✓ @Preview untuk lihat UI tanpa run app
+
+═══════════════════════════════════════════════════════════════
+
+📚 FILE PENTING UNTUK DIPELAJARI:
+
+app/src/main/java/com/example/compose/rally/
+├── RallyActivity.kt       (Entry point app)
+├── RallyApp.kt           (Navigation setup)
+├── RallyDestinations.kt  (Route definitions)
+├── ui/
+│   ├── AccountsScreen.kt (Accounts UI)
+│   ├── OverviewScreen.kt (Home screen)
+│   └── BillsScreen.kt    (Bills screen)
+
+═══════════════════════════════════════════════════════════════
+
+🎯 REKOMENDASI SEKARANG:
+
+Ketik di CMD:
+   test-deep-link.bat
+
+Ini akan test fitur deep linking yang penting untuk Navigation!
+
+═══════════════════════════════════════════════════════════════
+

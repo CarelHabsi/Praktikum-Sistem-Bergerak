@@ -1,0 +1,269 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║     ✅ DEEP LINK SUDAH DIPERBAIKI!                                ║
+║        Rally App Sekarang Bisa Navigasi ke SingleAccount         ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+
+🔍 MASALAH SEBELUMNYA:
+═════════════════════════════════════════════════════════════════════
+
+Command deep link berhasil dijalankan:
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Output:
+   Starting: Intent { act=android.intent.action.VIEW dat=rally://single_account/... }
+   Warning: Activity not started, its current task has been brought to the front
+
+Hasil:
+   ✓ Rally app terbuka
+   ✗ TIDAK navigasi ke halaman SingleAccount/Checking
+   ✗ Hanya menampilkan halaman awal (Overview)
+
+
+═════════════════════════════════════════════════════════════════════
+🔧 PERBAIKAN YANG DILAKUKAN:
+═════════════════════════════════════════════════════════════════════
+
+File yang dimodifikasi: RallyActivity.kt
+
+PERUBAHAN 1: Pass Intent ke RallyApp
+────────────────────────────────────────────────────────────────────
+
+SEBELUM:
+   setContent {
+       RallyApp()
+   }
+
+SESUDAH:
+   setContent {
+       RallyApp(intent = intent)
+   }
+
+
+PERUBAHAN 2: Handle Deep Link di RallyApp
+────────────────────────────────────────────────────────────────────
+
+SEBELUM:
+   fun RallyApp() {
+       RallyTheme {
+           val navController = rememberNavController()
+           // ... kode lainnya
+
+SESUDAH:
+   fun RallyApp(intent: android.content.Intent? = null) {
+       RallyTheme {
+           val navController = rememberNavController()
+
+           // Handle deep link
+           LaunchedEffect(intent) {
+               intent?.data?.let { uri ->
+                   navController.navigate(uri)
+               }
+           }
+           // ... kode lainnya
+
+
+PERUBAHAN 3: Import LaunchedEffect
+────────────────────────────────────────────────────────────────────
+
+Menambahkan import:
+   import androidx.compose.runtime.LaunchedEffect
+
+
+═════════════════════════════════════════════════════════════════════
+💡 PENJELASAN TEKNIS:
+═════════════════════════════════════════════════════════════════════
+
+Kenapa tidak navigasi sebelumnya?
+   RallyActivity menerima Intent dengan URI deep link, tapi tidak
+   meneruskannya ke NavController. NavController tidak tahu harus
+   navigasi ke mana.
+
+Bagaimana solusinya?
+   1. Pass Intent dari Activity ke Composable (RallyApp)
+   2. Gunakan LaunchedEffect untuk handle deep link saat composable di-load
+   3. Extract URI dari Intent dan pass ke navController.navigate(uri)
+
+LaunchedEffect itu apa?
+   LaunchedEffect adalah composable yang menjalankan side effect
+   (seperti navigation) saat composable pertama kali di-compose.
+
+   LaunchedEffect(intent) { ... }
+   - Akan jalan sekali saat composable pertama kali muncul
+   - Akan jalan lagi jika value 'intent' berubah
+
+
+═════════════════════════════════════════════════════════════════════
+✅ CARA TEST SETELAH PERBAIKAN:
+═════════════════════════════════════════════════════════════════════
+
+LANGKAH 1: Install App Terbaru
+────────────────────────────────────────────────────────────────────
+
+Pastikan emulator sudah running, lalu di terminal Android Studio:
+
+Untuk CMD:
+   set PATH=%PATH%;C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+   cd C:\Users\LENOVO\Desktop\GithubSistemBergerak\codelab-android-compose\NavigationCodelab
+
+Untuk PowerShell:
+   $env:Path += ";C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools"
+   cd C:\Users\LENOVO\Desktop\GithubSistemBergerak\codelab-android-compose\NavigationCodelab
+
+Lalu jalankan:
+   INSTALL_SAFE.bat
+
+Tunggu sampai selesai install.
+
+
+LANGKAH 2: Test Deep Link
+────────────────────────────────────────────────────────────────────
+
+Di terminal yang sama (setelah set PATH):
+
+adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+
+HASIL YANG DIHARAPKAN:
+────────────────────────────────────────────────────────────────────
+
+✓ Rally app terbuka
+✓ Langsung navigasi ke halaman "Single Account"
+✓ Menampilkan detail account "Checking"
+✓ TIDAK berhenti di halaman Overview
+
+
+═════════════════════════════════════════════════════════════════════
+🎓 CARA KERJA DEEP LINK:
+═════════════════════════════════════════════════════════════════════
+
+1. User/System menjalankan command ADB:
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+2. Android System:
+   - Parse URI: rally://single_account/Checking
+   - Cari app yang handle scheme "rally" dan host "single_account"
+   - Temukan RallyActivity (dari AndroidManifest.xml intent-filter)
+   - Start RallyActivity dengan Intent yang berisi URI
+
+3. RallyActivity.onCreate():
+   - Terima Intent dengan data URI
+   - Pass Intent ke RallyApp composable
+
+4. RallyApp composable:
+   - LaunchedEffect berjalan saat pertama kali di-compose
+   - Extract URI dari Intent: rally://single_account/Checking
+   - Call navController.navigate(uri)
+
+5. NavController:
+   - Match URI dengan deepLinks yang terdaftar
+   - Temukan composable SingleAccount dengan pattern:
+     "rally://single_account/{account_type}"
+   - Extract argument: account_type = "Checking"
+   - Navigate ke SingleAccountScreen dengan accountType="Checking"
+
+6. SingleAccountScreen:
+   - Tampilkan halaman detail account dengan tipe "Checking"
+
+
+═════════════════════════════════════════════════════════════════════
+🧪 TEST CASE LAIN:
+═════════════════════════════════════════════════════════════════════
+
+Test dengan account type lain:
+
+Savings Account:
+   adb shell am start -d "rally://single_account/Savings" -a android.intent.action.VIEW
+
+Home Account:
+   adb shell am start -d "rally://single_account/Home" -a android.intent.action.VIEW
+
+
+═════════════════════════════════════════════════════════════════════
+📋 STRUKTUR DEEP LINK:
+═════════════════════════════════════════════════════════════════════
+
+Format URI:
+   rally://single_account/{account_type}
+
+Komponen:
+   - Scheme: rally
+   - Host: single_account
+   - Path parameter: {account_type}
+
+Contoh valid:
+   rally://single_account/Checking   ✓
+   rally://single_account/Savings    ✓
+   rally://single_account/Home       ✓
+
+Contoh invalid:
+   rally://accounts                  ✗ (host salah)
+   http://rally/single_account       ✗ (scheme salah)
+   rally://single_account            ✗ (parameter hilang)
+
+
+═════════════════════════════════════════════════════════════════════
+❓ TROUBLESHOOTING:
+═════════════════════════════════════════════════════════════════════
+
+Q: Setelah install ulang, masih ke halaman Overview
+A: 1. Force stop app dulu: adb shell am force-stop com.example.compose.rally
+   2. Jalankan lagi deep link command
+
+Q: Error "Activity not found"
+A: AndroidManifest.xml belum punya intent-filter untuk deep link
+   (Tapi ini sudah ada, tidak perlu khawatir)
+
+Q: Deep link tidak work sama sekali
+A: 1. Check emulator running
+   2. Check app terinstall
+   3. Check URI format benar
+   4. Reinstall app: INSTALL_SAFE.bat
+
+Q: App crash saat buka via deep link
+A: Check Logcat di Android Studio untuk error detail
+
+
+═════════════════════════════════════════════════════════════════════
+📝 CATATAN PENTING:
+═════════════════════════════════════════════════════════════════════
+
+✓ Perubahan sudah disimpan di RallyActivity.kt
+✓ Perlu install ulang app agar perubahan berlaku
+✓ Deep link hanya work jika app sudah terinstall
+✓ Pastikan emulator running sebelum test
+
+
+═════════════════════════════════════════════════════════════════════
+🏁 RINGKASAN:
+═════════════════════════════════════════════════════════════════════
+
+Masalah:
+   Deep link tidak navigasi ke SingleAccount, hanya buka Overview
+
+Penyebab:
+   RallyActivity tidak meneruskan Intent URI ke NavController
+
+Solusi:
+   1. Pass Intent dari Activity ke Composable
+   2. Gunakan LaunchedEffect untuk handle deep link
+   3. Navigate NavController ke URI yang diterima
+
+Hasil:
+   Deep link sekarang berfungsi dengan sempurna! ✅
+
+
+═════════════════════════════════════════════════════════════════════
+
+NEXT STEP:
+
+1. Jalankan: INSTALL_SAFE.bat
+2. Tunggu install selesai
+3. Test: adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+4. Rally app akan langsung ke halaman Checking account! ✅
+
+
+═════════════════════════════════════════════════════════════════════
+

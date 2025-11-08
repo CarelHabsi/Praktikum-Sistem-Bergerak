@@ -1,0 +1,319 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║  SOLUSI: ADB NOT RECOGNIZED DI ANDROID STUDIO TERMINAL (CMD)     ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+
+🔍 MASALAH YANG TERJADI:
+═════════════════════════════════════════════════════════════════════
+
+Situasi Anda:
+   ✓ Sudah menggunakan Terminal di Android Studio
+   ✓ Terminal shell-nya adalah CMD (bukan PowerShell atau Bash)
+   ✓ Sudah cd ke root project
+
+Command yang Anda jalankan:
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Error yang muncul:
+   'adb' is not recognized as an internal or external command
+
+
+═════════════════════════════════════════════════════════════════════
+🔍 KENAPA MASIH ERROR?
+═════════════════════════════════════════════════════════════════════
+
+Alasan:
+   Terminal Android Studio membuka shell default Windows (CMD),
+   tapi CMD tersebut TIDAK otomatis load PATH untuk ADB!
+
+   Terminal Android Studio ≠ Terminal dengan ADB otomatis
+
+   Anda perlu:
+   1. Gunakan full path ADB
+   2. Atau add ADB ke PATH dulu
+   3. Atau gunakan Gradle task yang sudah ada
+
+
+═════════════════════════════════════════════════════════════════════
+✅ SOLUSI 1: GUNAKAN FULL PATH ADB (PALING MUDAH!)
+═════════════════════════════════════════════════════════════════════
+
+Di Terminal Android Studio yang sudah terbuka, gunakan FULL PATH:
+
+Ketik command ini (copy-paste seluruhnya):
+
+C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools\adb.exe shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Tekan Enter.
+
+SELESAI! Ini pasti work! ✅
+
+
+═════════════════════════════════════════════════════════════════════
+✅ SOLUSI 2: SET PATH SEMENTARA DI TERMINAL
+═════════════════════════════════════════════════════════════════════
+
+Di Terminal Android Studio, jalankan command ini dulu:
+
+set PATH=%PATH%;C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+
+Tekan Enter.
+
+Setelah itu, baru jalankan command Anda:
+
+adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Tekan Enter.
+
+SELESAI! ✅
+
+Note: PATH ini hanya berlaku di terminal session saat ini.
+Jika tutup terminal, harus set lagi.
+
+
+═════════════════════════════════════════════════════════════════════
+✅ SOLUSI 3: GUNAKAN SCRIPT (OTOMATIS!)
+═════════════════════════════════════════════════════════════════════
+
+Dari Terminal Android Studio (yang sudah di root project), ketik:
+
+test-deep-link.bat
+
+Script ini otomatis cari dan pakai full path ADB! ✅
+
+
+═════════════════════════════════════════════════════════════════════
+✅ SOLUSI 4: UBAH TERMINAL SHELL KE POWERSHELL
+═════════════════════════════════════════════════════════════════════
+
+PowerShell Android Studio biasanya lebih bagus handle PATH.
+
+Cara ubah shell terminal:
+
+1️⃣ Di Android Studio, klik Settings (Ctrl + Alt + S)
+
+2️⃣ Cari: Tools → Terminal
+
+3️⃣ Di "Shell path", ubah jadi:
+   powershell.exe
+
+4️⃣ Apply → OK
+
+5️⃣ Tutup terminal lama, buka terminal baru
+
+6️⃣ Coba lagi command adb
+
+
+═════════════════════════════════════════════════════════════════════
+✅ SOLUSI 5: ADD ADB KE SYSTEM PATH (PERMANEN)
+═════════════════════════════════════════════════════════════════════
+
+Jika mau ADB bisa dipakai di mana saja (termasuk CMD/Terminal):
+
+1️⃣ Tekan Windows + R
+
+2️⃣ Ketik: sysdm.cpl
+   Tekan Enter
+
+3️⃣ Tab "Advanced" → klik "Environment Variables"
+
+4️⃣ Di "System variables", cari "Path" → klik "Edit"
+
+5️⃣ Klik "New" → paste:
+   C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+
+6️⃣ Klik OK → OK → OK
+
+7️⃣ RESTART Android Studio (atau minimal restart Terminal)
+
+8️⃣ Buka terminal baru, sekarang command "adb" bisa dipakai!
+
+
+═════════════════════════════════════════════════════════════════════
+🎯 REKOMENDASI UNTUK ANDA SEKARANG:
+═════════════════════════════════════════════════════════════════════
+
+Karena terminal Anda sudah terbuka di Android Studio:
+
+Gunakan SOLUSI 1 (Full Path) - Paling Cepat!
+────────────────────────────────────────────────────────────────────
+
+Copy-paste command ini ke terminal Anda:
+
+C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools\adb.exe shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Tekan Enter, DONE! ✅
+
+
+Atau SOLUSI 2 (Set PATH Sementara) - Lebih Fleksibel!
+────────────────────────────────────────────────────────────────────
+
+1. Ketik:
+   set PATH=%PATH%;C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+
+2. Enter
+
+3. Ketik:
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+4. Enter, DONE! ✅
+
+Setelah set PATH, semua command adb bisa dipakai tanpa full path!
+
+
+═════════════════════════════════════════════════════════════════════
+📋 COMMAND LENGKAP (COPY-PASTE READY):
+═════════════════════════════════════════════════════════════════════
+
+FULL PATH VERSION:
+────────────────────────────────────────────────────────────────────
+C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools\adb.exe shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+
+SET PATH DULU (hanya sekali per terminal session):
+────────────────────────────────────────────────────────────────────
+set PATH=%PATH%;C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+
+Lalu pakai command biasa:
+────────────────────────────────────────────────────────────────────
+adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+
+ATAU PAKAI SCRIPT:
+────────────────────────────────────────────────────────────────────
+test-deep-link.bat
+
+
+═════════════════════════════════════════════════════════════════════
+💡 PENJELASAN TEKNIS:
+═════════════════════════════════════════════════════════════════════
+
+Kenapa Terminal Android Studio tidak otomatis load ADB?
+
+Terminal Android Studio hanya membuka shell default sistem (CMD/PowerShell).
+Shell tersebut menggunakan PATH dari system environment variables.
+
+Jika ADB belum ada di system PATH, maka:
+   ✗ Command "adb" tidak dikenali
+   ✓ Harus pakai full path: C:\...\adb.exe
+   ✓ Atau set PATH dulu di terminal session
+
+Berbeda dengan:
+   - Android Studio IDE → Tahu lokasi ADB dari Android SDK settings
+   - Gradle tasks → Tahu lokasi ADB dari local.properties
+   - Script test-deep-link.bat → Otomatis cari ADB di lokasi default
+
+
+═════════════════════════════════════════════════════════════════════
+🎓 COMMAND ADB LAIN DENGAN FULL PATH:
+═════════════════════════════════════════════════════════════════════
+
+Jika Anda pakai full path, semua command adb harus pakai full path:
+
+Check devices:
+C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools\adb.exe devices
+
+Uninstall app:
+C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools\adb.exe uninstall com.example.compose.rally
+
+Install app:
+C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools\adb.exe install app.apk
+
+View logs:
+C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools\adb.exe logcat
+
+
+Atau lebih mudah: SET PATH dulu sekali, lalu semua command bisa pakai "adb"
+
+
+═════════════════════════════════════════════════════════════════════
+✅ QUICK FIX - LAKUKAN SEKARANG:
+═════════════════════════════════════════════════════════════════════
+
+Di Terminal Android Studio Anda yang sudah terbuka:
+
+LANGKAH 1: Set PATH (sekali saja)
+────────────────────────────────────────────────────────────────────
+
+Copy-paste ini:
+set PATH=%PATH%;C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+
+Tekan Enter.
+
+
+LANGKAH 2: Test dengan command biasa
+────────────────────────────────────────────────────────────────────
+
+Sekarang coba command Anda:
+adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Tekan Enter.
+
+SELESAI! Rally app akan terbuka ke halaman Checking account! ✅
+
+
+LANGKAH 3: Command adb lainnya juga bisa sekarang
+────────────────────────────────────────────────────────────────────
+
+adb devices
+adb uninstall com.example.compose.rally
+adb logcat
+
+Semua bisa dipakai langsung! ✅
+
+
+═════════════════════════════════════════════════════════════════════
+❓ TROUBLESHOOTING:
+═════════════════════════════════════════════════════════════════════
+
+Q: Setelah set PATH, masih "not recognized"
+A: Pastikan tidak ada typo di command set PATH
+   Copy-paste yang saya berikan di atas
+
+Q: Setelah tutup terminal, PATH hilang lagi
+A: PATH yang di-set dengan "set" hanya berlaku di session itu
+   Solusi: Set lagi setiap buka terminal baru
+   Atau: Add ke system PATH (SOLUSI 5) supaya permanen
+
+Q: Full path command terlalu panjang
+A: Gunakan SOLUSI 2 (set PATH) atau SOLUSI 5 (add ke system PATH)
+   Atau pakai script: test-deep-link.bat
+
+Q: Mau command lebih pendek
+A: Buat alias/function di terminal:
+   doskey adb=C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools\adb.exe $*
+   Setelah itu bisa pakai "adb" langsung di terminal session itu
+
+
+═════════════════════════════════════════════════════════════════════
+🏁 RINGKASAN:
+═════════════════════════════════════════════════════════════════════
+
+Masalah:
+   Terminal Android Studio (CMD) tidak otomatis load ADB ke PATH
+
+Solusi Tercepat:
+   1. Set PATH: set PATH=%PATH%;C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+   2. Jalankan: adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Solusi Alternatif:
+   - Pakai full path ADB
+   - Pakai script: test-deep-link.bat
+   - Add ADB ke system PATH (permanen)
+
+
+═════════════════════════════════════════════════════════════════════
+
+COPY-PASTE INI KE TERMINAL ANDA (2 BARIS):
+
+set PATH=%PATH%;C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+
+SELESAI! ✅
+
+
+═════════════════════════════════════════════════════════════════════
+

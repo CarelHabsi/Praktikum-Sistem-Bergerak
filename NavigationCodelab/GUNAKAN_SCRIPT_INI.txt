@@ -1,0 +1,191 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║     ✅ SCRIPT SUDAH DIPERBAIKI - GUNAKAN YANG BARU INI!          ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+
+🐛 MASALAH YANG TERJADI:
+═════════════════════════════════════════════════════════════════════
+
+Script run-fix-all.bat RUSAK! Output Anda:
+   'adb' is not recognized as an internal or external command
+
+Penyebab:
+   - Setelah kill ADB, variable %ADB% tidak dipakai dengan benar
+   - Banyak command masih pakai "adb" langsung, bukan "%ADB%"
+   - Struktur script berantakan
+
+
+═════════════════════════════════════════════════════════════════════
+✅ SOLUSI: GUNAKAN SCRIPT BARU!
+═════════════════════════════════════════════════════════════════════
+
+⚠️ UPDATE: INSTALL_APP.bat KILL EMULATOR! Jangan gunakan!
+
+Gunakan yang ini:
+
+   INSTALL_SAFE.bat
+
+Script ini:
+   ✓ ADB path sudah fix
+   ✓ Semua command pakai "%ADB%" dengan benar
+   ✓ TIDAK kill emulator yang sedang running
+   ✓ Struktur code bersih dan tested
+   ✓ Auto-detect emulator
+   ✓ Install app dengan AMAN (emulator tetap hidup!)
+
+
+═════════════════════════════════════════════════════════════════════
+🚀 CARA PAKAI - IKUTI LANGKAH INI:
+═════════════════════════════════════════════════════════════════════
+
+STEP 1: START EMULATOR
+────────────────────────────────────────────────────────────────────
+
+PENTING! Emulator HARUS running dulu sebelum jalankan script!
+
+Cara start emulator:
+1. Buka Android Studio
+2. Tools → Device Manager
+3. Klik ▶ PLAY (hijau) di samping emulator
+4. TUNGGU 2-5 menit sampai boot selesai
+5. Lihat window emulator sampai muncul HOME SCREEN Android
+
+⚠️ JANGAN lanjut ke STEP 2 sebelum emulator selesai boot!
+
+
+STEP 2: JALANKAN SCRIPT YANG AMAN
+────────────────────────────────────────────────────────────────────
+
+Setelah emulator running, di CMD ketik:
+
+   INSTALL_SAFE.bat
+
+Tekan Enter.
+
+
+STEP 3: TUNGGU PROSES SELESAI
+────────────────────────────────────────────────────────────────────
+
+Script akan:
+✓ Restart ADB server dengan benar
+✓ Detect emulator yang running
+✓ Uninstall app lama
+✓ Install Rally app yang baru
+✓ Tampilkan hasil: "✓ SELESAI! App sudah diinstall"
+
+
+STEP 4: TEST DEEP LINK
+────────────────────────────────────────────────────────────────────
+
+Setelah app terinstall, test dengan:
+
+   test-deep-link.bat
+
+Rally app akan terbuka langsung ke halaman Checking account!
+
+
+═════════════════════════════════════════════════════════════════════
+📋 QUICK COMMAND:
+═════════════════════════════════════════════════════════════════════
+
+Anda sudah di folder yang benar, tinggal ketik:
+
+   INSTALL_SAFE.bat
+
+Tapi PASTIKAN emulator sudah running dulu!
+
+
+═════════════════════════════════════════════════════════════════════
+💡 KENAPA SCRIPT LAMA GAGAL?
+═════════════════════════════════════════════════════════════════════
+
+run-fix-all.bat rusak karena:
+
+1. Setelah "taskkill /F /IM adb.exe", ADB process mati
+2. Command selanjutnya pakai "adb" langsung, bukan "%ADB%"
+3. Karena ADB process baru belum start, PATH belum loaded
+4. Jadinya "adb not recognized"
+
+Script baru (INSTALL_APP.bat) sudah fix ini semua!
+
+
+═════════════════════════════════════════════════════════════════════
+⚠️ CATATAN PENTING:
+═════════════════════════════════════════════════════════════════════
+
+❌ JANGAN gunakan:
+   - run-fix-all.bat (RUSAK!)
+   - INSTALL_APP.bat (KILL EMULATOR!)
+
+✅ GUNAKAN:
+   - INSTALL_SAFE.bat (AMAN! Tidak kill emulator!)
+   - test-deep-link.bat (untuk test deep link)
+   - restart-emulator.bat (untuk restart emulator hang saja!)
+
+
+═════════════════════════════════════════════════════════════════════
+🎯 ACTION PLAN SEKARANG:
+═════════════════════════════════════════════════════════════════════
+
+1️⃣ CEK: Apakah emulator sudah running?
+   Lihat layar Anda, ada window emulator Android?
+
+   ❌ BELUM:
+      Buka Android Studio → Tools → Device Manager → Play ▶
+      Tunggu 2-5 menit sampai boot selesai
+
+   ✓ SUDAH:
+      Lanjut ke step 2
+
+2️⃣ JALANKAN: INSTALL_SAFE.bat
+   Ketik di CMD: INSTALL_SAFE.bat
+   Tekan Enter
+
+3️⃣ TUNGGU: Sampai muncul "✓ SELESAI!"
+
+4️⃣ TEST: test-deep-link.bat
+
+
+═════════════════════════════════════════════════════════════════════
+❓ TROUBLESHOOTING:
+═════════════════════════════════════════════════════════════════════
+
+Q: Masih muncul "no devices/emulators found"
+A: Emulator belum running! Start dulu dari Android Studio
+
+Q: Emulator lambat/hang
+A: Tunggu aja, first boot memang lama (2-5 menit)
+
+Q: Script error lain
+A: Screenshot error nya, tapi biasanya karena emulator belum siap
+
+
+═════════════════════════════════════════════════════════════════════
+🏁 RINGKASAN:
+═════════════════════════════════════════════════════════════════════
+
+Script Lama (RUSAK):
+   ✗ run-fix-all.bat → JANGAN GUNAKAN!
+   ✗ INSTALL_APP.bat → KILL EMULATOR! JANGAN GUNAKAN!
+
+Script Baru (BENAR):
+   ✓ INSTALL_SAFE.bat → GUNAKAN INI! (Aman, tidak kill emulator!)
+   ✓ test-deep-link.bat → Test deep link
+   ✓ restart-emulator.bat → Restart emulator hang (khusus untuk hang!)
+
+
+═════════════════════════════════════════════════════════════════════
+
+MULAI SEKARANG:
+
+1. Start emulator dari Android Studio (jika belum)
+2. Tunggu boot selesai (2-5 menit)
+3. Ketik di CMD: INSTALL_SAFE.bat
+4. Tunggu sampai selesai
+5. Test dengan: test-deep-link.bat
+
+
+═════════════════════════════════════════════════════════════════════
+

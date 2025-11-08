@@ -1,0 +1,193 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║     ✅ SOLUSI ERROR: 'adb' is not recognized - SUDAH DIPERBAIKI  ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+
+🔍 MASALAH YANG TERJADI:
+═════════════════════════════════════════════════════════════════════
+
+Command ini GAGAL:
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Error:
+   'adb' is not recognized as an internal or external command
+
+Penyebab:
+   ADB (Android Debug Bridge) belum ada di PATH Windows
+
+
+═════════════════════════════════════════════════════════════════════
+✅ SUDAH DIPERBAIKI! GUNAKAN SCRIPT INI:
+═════════════════════════════════════════════════════════════════════
+
+Saya sudah update SEMUA script agar auto-detect lokasi ADB!
+
+┌─────────────────────────────────────────────────────────────────┐
+│ UNTUK INSTALL APP KE EMULATOR:                                  │
+└─────────────────────────────────────────────────────────────────┘
+
+Ketik di CMD:
+   run-fix-all.bat
+
+✅ Script otomatis cari ADB
+✅ Install app ke emulator
+✅ Fix signature conflict
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ UNTUK TEST DEEP LINK:                                           │
+└─────────────────────────────────────────────────────────────────┘
+
+Ketik di CMD:
+   test-deep-link.bat
+
+✅ Script otomatis cari ADB
+✅ Test koneksi ke emulator
+✅ Execute deep link command
+
+
+═════════════════════════════════════════════════════════════════════
+🚀 LANGKAH-LANGKAH LENGKAP:
+═════════════════════════════════════════════════════════════════════
+
+1️⃣ START EMULATOR (dari Android Studio)
+   - Buka Android Studio
+   - Tools → Device Manager
+   - Klik ▶ Play pada emulator
+   - Tunggu 2-5 menit sampai boot selesai
+
+2️⃣ INSTALL APP (jalankan di CMD)
+   - Ketik: run-fix-all.bat
+   - Enter
+   - Tunggu sampai selesai install
+
+3️⃣ TEST DEEP LINK (jalankan di CMD)
+   - Ketik: test-deep-link.bat
+   - Enter
+   - Check emulator, app harus buka ke halaman Checking account
+
+
+═════════════════════════════════════════════════════════════════════
+📋 PENJELASAN COMMAND DEEP LINK:
+═════════════════════════════════════════════════════════════════════
+
+Command yang gagal sebelumnya:
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+Artinya:
+   adb shell              → Execute command di Android device
+   am start               → Activity Manager: start activity
+   -d "rally://..."       → Data URI (deep link)
+   -a VIEW                → Action VIEW
+
+Fungsi:
+   Test deep linking - Buka Rally app langsung ke halaman
+   "Single Account" dengan account type "Checking"
+
+Sekarang gunakan:
+   test-deep-link.bat  (otomatis handle ADB path)
+
+
+═════════════════════════════════════════════════════════════════════
+💡 ALTERNATIF JIKA SCRIPT GAGAL:
+═════════════════════════════════════════════════════════════════════
+
+OPSI 1: Gunakan Android Studio Terminal
+────────────────────────────────────────────────────────────────────
+1. Buka Android Studio
+2. View → Tool Windows → Terminal
+3. Di terminal, ADB sudah otomatis tersedia
+4. Ketik command seperti biasa:
+   adb shell am start -d "rally://single_account/Checking" -a android.intent.action.VIEW
+
+
+OPSI 2: Gunakan Gradle Task
+────────────────────────────────────────────────────────────────────
+1. Buka Android Studio
+2. Klik Run ▶ untuk install app
+3. App otomatis terinstall dan running
+
+
+OPSI 3: Manual Add ADB ke PATH (Advanced)
+────────────────────────────────────────────────────────────────────
+1. Cari lokasi ADB:
+   C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+
+2. Windows + R → ketik: sysdm.cpl
+
+3. Advanced tab → Environment Variables
+
+4. Di "System variables", pilih "Path" → Edit
+
+5. Klik "New" → paste:
+   C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools
+
+6. OK → OK → OK
+
+7. RESTART CMD (penting!)
+
+8. Test: adb version
+
+
+═════════════════════════════════════════════════════════════════════
+❓ TROUBLESHOOTING:
+═════════════════════════════════════════════════════════════════════
+
+Q: Script test-deep-link.bat tidak menemukan ADB
+A: Gunakan Android Studio Terminal (Opsi 1 di atas)
+
+Q: Deep link tidak berfungsi
+A: Pastikan app sudah terinstall dulu (run-fix-all.bat)
+   Check AndroidManifest.xml sudah ada intent-filter
+
+Q: Emulator tidak terdeteksi
+A: Pastikan emulator sudah running dan tunggu sampai boot selesai
+
+Q: App tidak terinstall
+A: Jalankan run-fix-all.bat dengan emulator running
+
+
+═════════════════════════════════════════════════════════════════════
+🎯 REKOMENDASI SEKARANG:
+═════════════════════════════════════════════════════════════════════
+
+Anda sudah di folder yang benar:
+C:\Users\LENOVO\Desktop\GithubSistemBergerak\codelab-android-compose\NavigationCodelab>
+
+Langsung jalankan:
+
+1. run-fix-all.bat          (install app)
+2. test-deep-link.bat       (test deep link)
+
+
+═════════════════════════════════════════════════════════════════════
+📝 RINGKASAN:
+═════════════════════════════════════════════════════════════════════
+
+✅ Semua script sudah diperbaiki
+✅ Auto-detect lokasi ADB
+✅ Tidak perlu manual add ke PATH
+✅ Tinggal jalankan script yang sesuai
+
+Script tersedia:
+- run-fix-all.bat       → Install app (otomatis handle ADB)
+- test-deep-link.bat    → Test deep link (otomatis handle ADB)
+- restart-emulator.bat  → Restart emulator hang
+- diagnose-emulator.bat → Diagnostic lengkap
+
+
+═════════════════════════════════════════════════════════════════════
+
+SEKARANG COBA:
+
+run-fix-all.bat
+
+LALU:
+
+test-deep-link.bat
+
+
+═════════════════════════════════════════════════════════════════════
+
