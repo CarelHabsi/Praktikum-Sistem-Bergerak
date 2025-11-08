@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ConstraintLayout_FormLogin</string>
+    <string name="login_form_title">Login Form</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button_text">LOGIN</string>
+    <string name="user_logo_description">User Logo</string>
+</resources>
