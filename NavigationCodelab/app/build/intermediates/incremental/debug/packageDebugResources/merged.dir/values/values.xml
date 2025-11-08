@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="backgroundColor">#26282F</color>
+    <color name="statusBarColor">#EFEFEF</color>
+    <string name="account_redacted">• • • • • </string>
+    <string name="accounts">Accounts</string>
+    <string name="app_name">Rally</string>
+    <string name="bills">Bills</string>
+    <string name="due">Due</string>
+    <string name="see_all">SEE ALL</string>
+    <string name="sort">Sort</string>
+    <string name="total">Total</string>
+    <style name="Theme.Rally" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:statusBarColor">@color/statusBarColor</item>
+        <item name="android:windowLightStatusBar" ns1:targetApi="m">true</item>
+        <item name="android:windowBackground">?attr/colorSurface</item>
+    </style>
+</resources>

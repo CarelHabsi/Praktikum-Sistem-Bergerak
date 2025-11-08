@@ -1,0 +1,20 @@
+R_DEF: Internal format may change without notice
+local
+color backgroundColor
+color statusBarColor
+drawable ic_launcher_foreground
+font eczar_regular
+font eczar_semibold
+font robotocondensed_bold
+font robotocondensed_light
+font robotocondensed_regular
+mipmap ic_launcher
+string account_redacted
+string accounts
+string app_name
+string bills
+string due
+string see_all
+string sort
+string total
+style Theme.Rally
